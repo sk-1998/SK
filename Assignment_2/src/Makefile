@@ -68,6 +68,10 @@ OBJ = $(SOURCES:.c=.o)
 %.o : %.c 
 	$(CC) $(CFLAGS) -c -o $@ $^
 
+DEPS = $(SRCS:.c=.d)
+
+%.d : %.c
+	$(CC) $(INCLUDES) -M $< $(CFLAGS) -o $@
 
 
 
@@ -91,4 +95,4 @@ $(TARGET).o: $(OBJ)
 
 .PHONY: clean
 clean: 
-	rm -f $(TARGET).out $(TARGET).map $(TARGET).o $(OBJ) *.i *.asm *.o
+	rm -f $(TARGET).out $(TARGET).map $(TARGET).o $(OBJ) *.i *.asm *.o *.d
