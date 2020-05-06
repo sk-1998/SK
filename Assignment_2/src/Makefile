@@ -78,8 +78,8 @@ DEPS = $(SRCS:.c=.d)
 .PHONY: build
 build: $(TARGET).out $(TARGET).map SIZE 
 
-$(TARGET).out: $(OBJ)
-	$(CC)  $(CFLAGS) -o $@ $(OBJ)
+$(TARGET).out: $(SOURCES)
+	$(CC)  $(CFLAGS) -o $@ $^
 
 $(TARGET).map: $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ) 
@@ -91,7 +91,7 @@ SIZE:
 compile-all: $(TARGET).o
 
 $(TARGET).o: $(OBJ)
-	$(CC) $(CFLAGS) -c -o $@ $^
+	$(CC) $(CFLAGS) -c $^ -o $@ 
 
 .PHONY: clean
 clean: 

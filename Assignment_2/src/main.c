@@ -30,7 +30,8 @@ char buffer[MAX_LENGTH];
 int main(void) {
   unsigned int i;
   char value;
-
+  uint8_t a ;
+  uint32_t b ;
   /* Code below does some arbitrary memory Reads & writes */
   clear_all(buffer, MAX_LENGTH);
   set_all( ( buffer + 8 ), 43, 2); 
